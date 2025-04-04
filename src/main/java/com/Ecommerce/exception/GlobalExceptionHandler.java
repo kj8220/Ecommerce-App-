@@ -35,4 +35,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleInvalidCredentialsException(InvalidCredentialsException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(new ErrorResponse(ex.getMessage()));
     }
+    
+    @ExceptionHandler(ProductIndexingException.class)
+    public ResponseEntity<ErrorResponse> handleProductIndexingException(ProductIndexingException ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse(ex.getMessage()));
+    }
 }
